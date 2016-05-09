@@ -1,0 +1,18 @@
+---
+- hosts: frontend
+  remote_user: ec2-user
+  vars:
+    hostname_private: '{{ ec2_private_dns_name }}'
+    ansible_python_interpreter: "/usr/bin/env python"
+  gather_facts: True
+  roles:
+    - { role: placeholder, become: yes, become_method: sudo }
+
+- hosts: backend
+  remote_user: ec2-user
+  vars:
+    hostname_private: '{{ ec2_private_dns_name }}'
+    ansible_python_interpreter: "/usr/bin/env python"
+  gather_facts: True
+  roles:
+    - { role: placeholder, become: yes, become_method: sudo }
